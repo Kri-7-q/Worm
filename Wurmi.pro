@@ -31,4 +31,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     Domain/worm.h \
-    Until/ringmem.h
+    Utility/ringmem.h
