@@ -1,31 +1,43 @@
 import QtQuick 2.7
 import QtQuick.Window 2.2
+import Models 1.0
+import Controler 1.0
 
 Window {
+    id: root
     visible: true
     width: 640
     height: 480
     title: qsTr("Hello World")
 
+    WormModel {
+        id: wormModel
+    }
+
+    WormControler {
+        id: wormCtrl
+        model: wormModel;
+    }
+
     Item {
         id: controler
         focus: true
 
-        property int length: 20
+        property int pos: 700
 
         Keys.onPressed: {
-            length += 10;
+            wormCtrl.keyPressed(event.key);
         }
     }
 
     // Wurm
     Repeater {
         id: worm
-        model: controler.length
+        model: wormModel
 
         Rectangle {
-            x: 100 + index * 8
-            y: 100
+            x: pointX
+            y: pointY
             width: 10
             height: 10
             radius: 5
@@ -33,4 +45,5 @@ Window {
             border.color: "red"
         }
     }
+
 }

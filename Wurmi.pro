@@ -14,7 +14,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    Domain/worm.cpp
+    Domain/worm.cpp \
+    Models/wormmodel.cpp \
+    Controler/wormcontroler.cpp
 
 RESOURCES += qml.qrc
 
@@ -31,4 +33,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     Domain/worm.h \
-    Utility/ringmem.h
+    Utility/ringmem.h \
+    Models/wormmodel.h \
+    Controler/wormcontroler.h
