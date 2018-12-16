@@ -3,6 +3,7 @@
 
 #include "Models/wormmodel.h"
 #include <QObject>
+#include <QTimer>
 
 class WormControler : public QObject
 {
@@ -21,8 +22,14 @@ signals:
 public slots:
     void keyPressed(const int key);
 
+private slots:
+    void move();
+
 private:
     WormModel* m_pModel;
+    QTimer* m_pTimer;
+    int m_lastKey;
+    int m_time;
 };
 
 #endif // WORMCONTROLER_H

@@ -14,7 +14,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    Domain/worm.cpp \
     Models/wormmodel.cpp \
     Controler/wormcontroler.cpp
 
@@ -32,7 +31,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    Domain/worm.h \
     Utility/ringmem.h \
     Models/wormmodel.h \
     Controler/wormcontroler.h
