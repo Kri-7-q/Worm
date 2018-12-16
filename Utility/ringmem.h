@@ -1,6 +1,15 @@
 #ifndef RINGMEM_H
 #define RINGMEM_H
 
+/*!
+ * \brief Template class RingMem
+ *        A memory object which simulates a ring. Last element stored in comes first out. LIFO
+ *        RingMem has a given size to store objects. It appends new objects to the 'list'
+ *        and removes the oldes object if ring is full.
+ *        On requests greather the ring size it repeats the contant.
+ *        The memory could be incresed to any size. That will cause the RimgMem object to allocate
+ *        new memory and copy the data from old array to the new one.
+ */
 
 template<class T>
 class RingMem
@@ -61,8 +70,8 @@ public:
         delete [] m_pArray;
     }
 
-    unsigned totalSize() const              { return m_size; }
-    unsigned currentSize() const            { return m_currentSize; }
+    unsigned capacity() const               { return m_size; }
+    unsigned size() const                   { return m_currentSize; }
     void add(const T& element);
     void increaseTo(const unsigned size);
 
@@ -114,6 +123,9 @@ private:
  */
 template<class T>
 void RingMem<T>::add(const T& element) {
+    if (m_size < 1) {                       // Ring has no capacity. (Standard constructor)
+        return;
+    }
     if (m_currentSize < 1) {                // Insert first element.
         m_pArray[m_head] = element;
         ++m_currentSize;
